@@ -1,0 +1,18 @@
+<header>
+    <img src="https://cdn.tindin.com.br/logo-tindin-w-blue.png" alt="Logo Tindin" />
+    <div class="search-container">
+        <input
+            type="text"
+            class="search"
+            name="search"
+            id="search"
+            placeholder="Search Game Here"
+            [formControl]="inputSearchGame"
+        />
+        <button (click)="seeResultsSearch()" type="button">Search</button>
+    </div>
+    <a href="/auth">
+        <!-- <i class="fa-solid fa-circle-user"></i> -->
+        <i class="fa-solid fa-user-large"></i>
+    </a>
+</header>

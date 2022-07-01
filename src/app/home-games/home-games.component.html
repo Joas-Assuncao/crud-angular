@@ -1,0 +1,21 @@
+<app-header (searchEmitter)="onSearch($event)"></app-header>
+
+<main>
+    <swiper [navigation]="true" class="mySwiper">
+        <ng-template swiperSlide>
+            <img src="https://psverso.com.br/wp-content/uploads/2022/05/evil-dead-the-game-como-reduzir-medo.jpg" alt="Image game" />
+        </ng-template>
+
+        <ng-template swiperSlide>
+            <img src="https://psverso.com.br/wp-content/uploads/2022/05/evil-dead-the-game-como-reduzir-medo.jpg" alt="Image game" />
+        </ng-template>
+
+        <ng-template swiperSlide>
+            <img src="https://psverso.com.br/wp-content/uploads/2022/05/evil-dead-the-game-como-reduzir-medo.jpg" alt="Image game" />
+        </ng-template>
+    </swiper>
+
+    <div class="cards">
+        <app-card-game *ngFor="let game of games" [game]="game"></app-card-game>
+    </div>
+</main>

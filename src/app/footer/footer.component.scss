@@ -1,0 +1,27 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 2rem;
+    padding: 1rem 5rem;
+
+    background: #1e3e88;
+
+    p {
+        color: #FFF;
+    }
+
+    div {
+        a {
+            color: #fff;
+
+            &:first-of-type {
+                margin-right: 2rem;
+            }
+            i {
+                font-size: 3rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+
+    img {
+        width: 18.75rem;
+        height: 25rem;
+    }
+
+    span, strong {
+        color: #FFF;
+
+        text-transform: uppercase;
+        font-size: 1.25rem;
+    }
+
+    small {
+        color: #FFF;
+        background: #1e3e88;
+
+        padding: .125rem .75rem;
+
+        font-size: .8125rem;
+
+        border-radius: .625rem;
+    }
+}
