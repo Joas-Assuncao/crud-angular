@@ -1,4 +1,9 @@
-# VagaTindinAngular2
+# VagaTindinAngular
+
+I used the Swiper for carousel, ngx-pagination for pagination on cards.
+I chose for use the component Header in the component home because of the practice of researched
+
+## Below are all the data to run the app!
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
 

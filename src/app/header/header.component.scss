@@ -17,8 +17,8 @@ header {
         align-items: center;
         justify-content: space-between;
 
-        width: 400px;
-        max-width: 30%;
+        max-width: 500px;
+        width: 50%;
 
         padding: .3125rem .625rem .3125rem 1rem;
 
@@ -27,8 +27,10 @@ header {
         border-radius: 2.5rem;
 
         input {
+            max-width: 50%;
             background: transparent;
 
+            font-size: 1rem;
             border: none;
 
             &::placeholder {
@@ -51,6 +53,13 @@ header {
 
             border: 3px solid #1e3e88;
             border-radius: 2rem;
+
+            transition: .3s;
+
+            &:hover {
+                background: #2c2c2c;
+                border: 3px solid #fbfbfb;
+            }
         }
     }
 
@@ -69,6 +78,120 @@ header {
 
         i {
             font-size: 1.25rem;
+        }
+    }
+}
+
+@media(max-width: 800px) {
+    header {
+        img {
+            height: 3rem;
+        }
+
+        div.search-container {
+            input {
+                font-size: .75rem;
+
+                    &::placeholder {
+                    font-size: .75rem;
+                }
+            }
+
+            button {
+                padding: .5rem .75rem;
+
+                letter-spacing: .0625rem;
+                font-size: .75rem;
+            }
+        }
+    }
+}
+
+@media(max-width: 630px) {
+    header {
+        img {
+            height: 2.5rem;
+        }
+
+        div.search-container {
+            input {
+                font-size: .625rem;
+
+                    &::placeholder {
+                    font-size: .625rem;
+                }
+            }
+
+            button {
+                padding: .3125rem .5rem;
+
+                border: 1px solid #1e3e88;
+
+                letter-spacing: .0625rem;
+                font-size: .625rem;
+            }
+        }
+
+        a {
+            height: 2.5rem;
+            width: 2.5rem;
+
+            color: #FFF;
+
+            border: 2px solid #FFF;
+
+            i {
+                font-size: .875rem;
+            }
+        }
+    }
+}
+
+@media(max-width: 510px) {
+    header {
+        div.search-container {
+            padding: .25rem .5rem .25rem .75rem;
+
+            button {
+                padding: .3125rem .4rem;
+
+                border: 1px solid #1e3e88;
+
+                letter-spacing: .0625rem;
+                font-size: .5rem;
+            }
+        }
+
+        a {
+            height: 2rem;
+            width: 2rem;
+
+            i {
+                font-size: .75rem;
+            }
+        }
+    }
+}
+
+@media(max-width: 450px) {
+    header {
+        padding: .75rem .5rem;
+
+        img {
+            height: 2rem;
+        }
+
+        div.search-container {
+            padding: .25rem .25rem .25rem .75rem;
+
+            button {
+                padding: .3125rem .4rem;
+
+                border: 1px solid #1e3e88;
+
+                letter-spacing: .0625rem;
+                font-size: .5rem;
+            }
         }
     }
 }

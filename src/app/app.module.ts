@@ -10,6 +10,9 @@ import { HomeGamesComponent } from './home-games/home-games.component';
 import { FooterComponent } from './footer/footer.component';
 import { CardGameComponent } from './card-game/card-game.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { AuthComponent } from './auth/auth.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
     declarations: [
@@ -17,14 +20,17 @@ import { ReactiveFormsModule } from '@angular/forms';
         HeaderComponent,
         HomeGamesComponent,
         FooterComponent,
-        CardGameComponent
+        CardGameComponent,
+        AuthComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         SwiperModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        SweetAlert2Module.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

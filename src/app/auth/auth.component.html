@@ -1,0 +1,15 @@
+<main>
+    <form (submit)="onSubmit()" [formGroup]="form">
+        <h1>Sign in</h1>
+
+        <p *ngIf="isEmpty">Verifique seus dados e tente novamente</p>
+        <p *ngIf="isShort">E-mail deve conter mais de 10 caracteres e senha mais de 3</p>
+
+        <input type="text" class="email" name="email" placeholder="E-mail" formControlName="email" />
+        <input type="password" class="password" name="password" placeholder="Password" formControlName="password" />
+
+        <button type="submit" [disabled]="isLogged">
+            Login your Account
+        </button>
+    </form>
+</main>

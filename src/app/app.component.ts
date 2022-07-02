@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { GetGamesService } from "./get-games.service";
+import { GetGamesService } from "./services/get-games.service";
 import { Game } from "./home-games/returnAPI";
 
 @Component({
@@ -8,7 +8,6 @@ import { Game } from "./home-games/returnAPI";
     styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-    title = 'vaga-tindin-angular2';
     games!: Game[];
 
     constructor(private getGamesService: GetGamesService) { }

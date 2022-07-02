@@ -1,46 +1,134 @@
 @import "~swiper/css";
 @import "~swiper/css/navigation";
 
-.swiper {
-    width: 65%;
-    // border-radius: 2rem;
 
-    .swiper-slide {
+main {
+    text-align: center;
+    margin-bottom: 2rem;
 
-        text-align: center;
-        font-size: 18px;
-        background: #fff;
+    h1 {
+        color: #FFF;
 
-        /* Center slide text vertically */
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        align-items: center;
+        margin-bottom: 2rem;
 
-        img {
-            display: block;
-            width: 100%;
-            object-fit: cover;
+        text-transform: uppercase;
+        letter-spacing: .25rem;
+    }
+
+    .swiper {
+        width: 65%;
+
+        .swiper-slide {
+
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+
+            img {
+                display: block;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .swiper-button-prev::after {
+            content: 'prev';
+            height: 30px;
+            width: 15px;
+            color: white;
+        }
+
+        .swiper-button-next::after {
+            content: 'next';
+            height: 30px;
+            width: 15px;
+            color: white;
+        }
+    }
+
+    div.cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2rem;
+        flex-wrap: wrap;
+
+        width: 100%;
+
+        padding: 0 1rem;
+
+        margin-top: 3rem;
+
+        .pagination {
+            grid-row-start: 3;
+            grid-row-end: 4;
+            grid-column-start: 1;
+            grid-column-end: 4;
+
+            text-align: center;
+
+            pagination-template {
+                nav {
+                    .ngx-pagination {
+                        li {
+                            a {
+                                color: #FFF;
+
+                                span {
+                                    color: #FFF;
+                                }
+                            }
+                        }
+                        .current {
+                            background: #1e3e88;
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
-div.cards {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+@media(max-width: 1000px) {
+    .swiper {
+        width: 80%;
+    }
+}
 
-    width: 100%;
+@media(max-width: 780px) {
+    .swiper {
+        width: 90%;
+    }
+}
 
-    margin-top: 3rem;
+@media(max-width: 550px) {
+    .swiper {
+        width: 100%;
+    }
+
+    div.cards {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        flex-wrap: wrap;
+
+        width: 100%;
+
+        padding: 0 1rem;
+
+        margin-top: 3rem;
+    }
 }

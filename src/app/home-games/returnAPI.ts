@@ -7,14 +7,19 @@ export interface Game {
     _id: string;
     title: string;
     description: string;
+    resume?: string;
+    photos: string[];
+    videos: string[];
     genres: string[];
     platforms: string[];
     tags: string[];
     rating: number;
+    highlight?: boolean,
     totalVotes: number;
-    photos: string[];
-    videos: string[];
-    createdAt: Date;
-    updatedAt: Date;
+    mediumPrice?: string | number,
+    releaseYear: number,
+    launchDate: Date,
+    createdAt: Date,
+    updatedAt: Date,
     __v: number;
 }

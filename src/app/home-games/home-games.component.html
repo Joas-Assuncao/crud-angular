@@ -1,6 +1,8 @@
 <app-header (searchEmitter)="onSearch($event)"></app-header>
 
 <main>
+    <h1>Highlight Games</h1>
+
     <swiper [navigation]="true" class="mySwiper">
         <ng-template swiperSlide>
             <img src="https://psverso.com.br/wp-content/uploads/2022/05/evil-dead-the-game-como-reduzir-medo.jpg" alt="Image game" />
@@ -16,6 +18,7 @@
     </swiper>
 
     <div class="cards">
-        <app-card-game *ngFor="let game of games" [game]="game"></app-card-game>
+        <app-card-game *ngFor="let game of games | paginate: { itemsPerPage: 6, currentPage: p }" [game]="game"></app-card-game>
+        <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>
     </div>
 </main>
