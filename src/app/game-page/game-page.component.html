@@ -1,0 +1,55 @@
+<main>
+    <div class="title">
+        <a [routerLink]="['/']">
+            <i class="fa-solid fa-house"></i>
+        </a>
+        <span>{{ gameById.game.title }}</span>
+    </div>
+
+    <section>
+        <div class="swiperContainer">
+            <swiper
+                style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
+                [loop]="true"
+                [spaceBetween]="10"
+                [navigation]="true"
+                [thumbs]="{ swiper: thumbsSwiper }"
+                class="mySwiper2"
+            >
+                <ng-template swiperSlide *ngFor="let photo of gameById.game.photos">
+                    <img src="{{ photo.url }}" />
+                </ng-template>
+            </swiper>
+            <swiper
+                (swiper)="thumbsSwiper = $event"
+                [loop]="true"
+                [spaceBetween]="10"
+                [slidesPerView]="4"
+                [freeMode]="true"
+                [watchSlidesProgress]="true"
+                class="mySwiper"
+            >
+                <ng-template swiperSlide *ngFor="let photo of gameById.game.photos">
+                    <img src="{{ photo.url }}" />
+                </ng-template>
+            </swiper>
+        </div>
+
+        <article>
+            <div class="header">
+                <h1>{{ gameById.game.title }}<span>{{ gameById.game.rating }}/10</span></h1>
+                <p>{{ gameById.game.resume || gameById.game.description }}</p>
+            </div>
+            <div class="content">
+                <p *ngIf="gameById.game.genres[0]"><span>Genres: </span><label *ngFor="let genre of gameById.game.genres">{{ genre }}; </label></p>
+                <p *ngIf="gameById.game.studio"><span>Studio: </span><label>{{ gameById.game.studio.name }} </label></p>
+                <p *ngIf="gameById.game.productor"><span>Productor: </span><label>{{ gameById.game.productor }} </label></p>
+                <p *ngIf="gameById.game.company"><span>Company: </span><label>{{ gameById.game.company.name }} </label></p>
+                <p *ngIf="gameById.game.platforms"><span>Platforms: </span><label *ngFor="let platform of gameById.game.platforms">{{ platform }} </label></p>
+                <p *ngIf="gameById.game.tags"><span>Tags: </span><label *ngFor="let tag of gameById.game.tags">#{{ tag }} </label></p>
+                <p *ngIf="gameById.game.totalVotes"><span>Total votes: </span><label>{{ gameById.game.totalVotes }}</label></p>
+            </div>
+            <button (click)="voteInGame()">vote now <div *ngIf="isLoading" class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+        </article>
+    </section>
+</main>

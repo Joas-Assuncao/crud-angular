@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { tap } from 'rxjs';
 import SwiperCore, { Navigation } from "swiper";
 
 import { GetGamesService } from '../services/get-games.service';
-import { Game, ReturnAPI } from './returnAPI';
+import { Game, ReturnAPI } from './gamesInterface';
 
 SwiperCore.use([Navigation]);
 
@@ -16,7 +15,10 @@ SwiperCore.use([Navigation]);
 export class HomeGamesComponent implements OnInit {
     data!: ReturnAPI;
     games!: Game[];
+    highlightGames!: Game[];
+
     valueSearch: string = '';
+
     p: number = 1;
 
     constructor(private getGamesService: GetGamesService) { }
@@ -25,7 +27,14 @@ export class HomeGamesComponent implements OnInit {
         this.getGamesService.getGames().subscribe(data => {
             this.data = data;
             this.games = data.games.map(game => (
-                {...game, mediumPrice: game.mediumPrice?.toLocaleString()}
+                {
+                    ...game,
+                    mediumPrice: game.mediumPrice?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                }
+            ));
+
+            this.highlightGames = data.games.filter(game => (
+                game.highlight === true
             ));
         });
     }

@@ -8,7 +8,11 @@ export interface Game {
     title: string;
     description: string;
     resume?: string;
-    photos: string[];
+    photos: {
+        name: string;
+        url: string;
+        _id: string;
+    }[];
     videos: string[];
     genres: string[];
     platforms: string[];
