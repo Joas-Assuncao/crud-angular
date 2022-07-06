@@ -15,19 +15,58 @@ export class CreateGameComponent implements OnInit {
     body: ICreateGame = {
         title: '',
         description: '',
-        photos: [null],
-        videos: [null],
+        photos: [],
+        videos: [],
         mediumPrice: 0,
         studio: null,
         company: null,
         releaseYear: 0,
-        genres: [null],
-        platforms: [null],
-        tags: [null],
+        genres: [],
+        platforms: [],
+        tags: [],
     };
 
-    genres: string[] = [];
-    platforms: string[] = [];
+    genres: string[] = [
+        "Fight",
+        "Sports",
+        "Survival",
+        "Horror",
+        "RPG",
+        "Fps",
+        "Tps",
+        "Platform",
+        "Adventure",
+        "Action",
+        "Minigame",
+        "Racing",
+        "Strategy",
+        "Musical",
+        "Dance",
+        "Simulator"
+    ];
+
+    platforms: string[] = [
+        "PS",
+        "PS2",
+        "PS3",
+        "PS4",
+        "PS5",
+        "PSP",
+        "XBOX",
+        "XBOX 360",
+        "XBOX ONE",
+        "XBOX SERIES S",
+        "XBOX SERIES X",
+        "SUPER NINTENDO",
+        "NINTENDO 64",
+        "NINTENDO SWITCH",
+        "NINTENDO WII",
+        "NINTENDO DS",
+        "NINTENDO 3DS",
+        "MEGA DRIVE",
+        "PC",
+        "MOBILE"
+    ];
     tags: string[] = [];
 
     photos: {url: string, name: string}[] = [];
@@ -67,7 +106,7 @@ export class CreateGameComponent implements OnInit {
             }),
             mediumPrice: [0],
             releaseYear: [0],
-            genres: [''],
+            genres: [null],
             platforms: [''],
             tags: [''],
         })
@@ -76,18 +115,15 @@ export class CreateGameComponent implements OnInit {
     }
 
     addGenres() {
-        this.genres.push(this.form.value.genres);
-        this.form.patchValue({
-            genres: null
-        })
-        console.log(this.genres);
+        if(this.body.genres.includes(this.form.value.genres)) return;
+
+        this.body.genres.push(this.form.value.genres);
     }
 
     addPlatforms() {
-        this.platforms.push(this.form.value.platforms);
-        this.form.patchValue({
-            platforms: null
-        })
+        if(this.body.platforms.includes(this.form.value.platforms)) return;
+
+        this.body.platforms.push(this.form.value.platforms);
     }
 
     addTags() {
@@ -157,8 +193,6 @@ export class CreateGameComponent implements OnInit {
         this.body.studio = this.form.value.studio;
         this.body.title = this.form.value.title;
 
-        this.body.genres = this.genres;
-        this.body.platforms = this.platforms;
         this.body.tags = this.tags;
         this.body.photos = this.photos;
         this.body.videos = this.videos;
@@ -184,6 +218,8 @@ export class CreateGameComponent implements OnInit {
             try {
                 this.gameService.postGame(this.body);
 
+                console.log('Game created successfully!');
+
                 this.haveError = false;
 
                 this.router.navigate(['/'])
@@ -192,6 +228,9 @@ export class CreateGameComponent implements OnInit {
                 this.haveError = true;
                 return;
             }
+        } else {
+            this.haveError = true;
+            return;
         }
     }
 }

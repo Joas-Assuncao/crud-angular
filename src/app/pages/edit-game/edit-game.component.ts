@@ -118,6 +118,7 @@ export class EditGameComponent implements OnInit {
         if(fieldsVerification) {
             try {
                 this.gameService.updateGame(this.body);
+                console.log('Game edited successfully!');
 
                 this.haveError = false;
 
@@ -127,6 +128,9 @@ export class EditGameComponent implements OnInit {
                 this.haveError = true;
                 return;
             }
+        } else {
+            this.haveError = true;
+            return;
         }
     }
 }

@@ -41,6 +41,7 @@ main {
             }
 
             input {
+                width: 100%;
                 background: transparent;
                 color: #FFF;
 
@@ -56,7 +57,29 @@ main {
                 }
             }
 
+            select {
+                width: 100%;
+                background: transparent;
+                color: #FFF;
+
+                padding: .5rem .75rem;
+
+                border: 1px solid #FFF;
+                border-radius: .75rem;
+
+                transition: all .3s;
+
+                &:focus {
+                    border-radius: 0;
+                }
+
+                option {
+                    color: #000;
+                }
+            }
+
             button {
+                width: 100%;
                 padding: .5rem .75rem;
 
                 background: #1e3e88;
@@ -73,7 +96,7 @@ main {
         }
 
         p {
-            grid-column-start: 2;
+            grid-column-start: 1;
             grid-column-end: 5;
 
             color: #d03030;

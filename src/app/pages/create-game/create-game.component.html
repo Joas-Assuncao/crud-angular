@@ -9,12 +9,16 @@
         <label>Medium price: <input type="number" formControlName="mediumPrice" placeholder="mediumPrice"></label>
         <label>Release Year: <input type="number" formControlName="releaseYear" placeholder="releaseYear"></label>
         <label>Genres
-            <input type="text" formControlName="genres" placeholder="genres">
-            <button type="button" (click)="addGenres()">Add genres</button>
+            <span>Select one or more genres!</span>
+            <select (change)="addGenres()" type="text" formControlName="genres">
+                <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+            </select>
         </label>
         <label>Platforms
-            <input type="text" formControlName="platforms" placeholder="platforms">
-            <button type="button" (click)="addPlatforms()">Add platforms</button>
+            <span>Select one or more platforms!</span>
+            <select (change)="addPlatforms()" type="text" formControlName="platforms">
+                <option *ngFor="let platform of platforms" [value]="platform">{{ platform }}</option>
+            </select>
         </label>
         <label>Tags
             <input type="text" formControlName="tags" placeholder="tags">

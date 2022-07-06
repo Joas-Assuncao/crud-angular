@@ -21,7 +21,7 @@ export interface ICreateGame {
         locationCountry: string;
     } | null;
     releaseYear: number;
-    genres: string[] | null[];
-    platforms: string[] | null[];
-    tags: string[] | null[];
+    genres: string[] | null[] | any;
+    platforms: string[] | null[] | any;
+    tags: string[] | null[] | any;
 }
