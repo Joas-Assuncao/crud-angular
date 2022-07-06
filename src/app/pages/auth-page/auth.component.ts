@@ -46,7 +46,14 @@ export class AuthComponent implements OnInit {
         }
 
         if(this.isEmpty === false && this.isShort === false) {
-            const isLogged = this.loginService.login({ email, password });
+            let isLogged;
+            try {
+                isLogged = this.loginService.login({ email, password });
+            } catch(err) {
+                console.error(err);
+                return;
+            }
+
             isLogged.subscribe((value: any) => {
                 localStorage.setItem('token', JSON.stringify(value.token));
                 localStorage.setItem('userId', JSON.stringify(value.user._id));

@@ -7,9 +7,30 @@ main {
 
     padding: 1rem;
 
-    a {
-        font-size: 2rem;
-        color: #FFF;
+    div.title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 1rem;
+
+        a {
+            color: #FFF;
+
+            &::after {
+                content: '';
+
+                background: #FFF;
+
+                padding: 1px;
+
+                margin: 1rem;
+            }
+        }
+
+        span {
+            color: #FFF;
+        }
     }
 
     form {

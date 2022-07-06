@@ -4,44 +4,45 @@
     </a>
 
     <form [formGroup]="form" (submit)="onSubmit()">
-        <label>Title: <input type="text" formControlName="title"></label>
-        <label>Description: <input type="text" formControlName="description"></label>
-        <label>Medium price: <input type="number" formControlName="mediumPrice"></label>
-        <label>Release Year: <input type="number" formControlName="releaseYear"></label>
+        <label>Title: <input type="text" formControlName="title" placeholder="title"></label>
+        <label>Description: <input type="text" formControlName="description" placeholder="description"></label>
+        <label>Medium price: <input type="number" formControlName="mediumPrice" placeholder="mediumPrice"></label>
+        <label>Release Year: <input type="number" formControlName="releaseYear" placeholder="releaseYear"></label>
         <label>Genres
-            <input type="text" formControlName="genres">
+            <input type="text" formControlName="genres" placeholder="genres">
             <button type="button" (click)="addGenres()">Add genres</button>
         </label>
         <label>Platforms
-            <input type="text" formControlName="platforms">
+            <input type="text" formControlName="platforms" placeholder="platforms">
             <button type="button" (click)="addPlatforms()">Add platforms</button>
         </label>
         <label>Tags
-            <input type="text" formControlName="tags">
+            <input type="text" formControlName="tags" placeholder="tags">
             <button type="button" (click)="addTags()">Add tags</button>
         </label>
         <label formGroupName="photos">Photos<br/>
-            <span>Url: </span><input type="text" formControlName="url">
-            <span>Name: </span><input type="text" formControlName="name">
+            <span>Url: </span><input type="text" formControlName="url" placeholder="url">
+            <span>Name: </span><input type="text" formControlName="name" placeholder="name">
             <button type="button" (click)="addPhotos()">Add photo</button>
         </label>
         <label formGroupName="videos">Videos<br/>
-            <span>Url: </span><input type="text" formControlName="url">
-            <span>Name: </span><input type="text" formControlName="type">
+            <span>Url: </span><input type="text" formControlName="url" placeholder="url">
+            <span>Name: </span><input type="text" formControlName="type" placeholder="type">
             <button type="button" (click)="addVideos()">Add video</button>
         </label>
         <label formGroupName="studio">Studio<br/>
-            <span>Name: </span><input type="text" formControlName="name">
-            <span>Location City: </span><input type="text" formControlName="locationCity">
-            <span>Location Country: </span><input type="text" formControlName="locationCountry">
+            <span>Name: </span><input type="text" formControlName="name" placeholder="name">
+            <span>Location City: </span><input type="text" formControlName="locationCity" placeholder="locationCity">
+            <span>Location Country: </span><input type="text" formControlName="locationCountry" placeholder="locationCountry">
         </label>
         <label formGroupName="company">Company<br/>
-            <span>Name: </span><input type="text" formControlName="name">
-            <span>Location City: </span><input type="text" formControlName="locationCity">
-            <span>Location Country: </span><input type="text" formControlName="locationCountry">
+            <span>Name: </span><input type="text" formControlName="name" placeholder="name">
+            <span>Location City: </span><input type="text" formControlName="locationCity" placeholder="locationCity">
+            <span>Location Country: </span><input type="text" formControlName="locationCountry" placeholder="locationCountry">
         </label>
 
         <p *ngIf="haveError">Fill in every fields and add at least one of each field that contains the option to add!</p>
+        <button style="background: #444;" (click)="cancelCreation()" type="button">Cancel</button>
         <button type="submit">Submit</button>
     </form>
 

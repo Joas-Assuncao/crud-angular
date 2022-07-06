@@ -1,7 +1,18 @@
 # VagaTindinAngular
 
-I used the Swiper for carousel, ngx-pagination for pagination on cards.
-I chose for use the component Header in the component home because of the practice of researched
+## Descrição
+
+Fiz um CRUD completo usando Angular e suas funcionalidades!
+
+Utilizei as bibliotecas Swiper para slides e ngx-pagination para a paginação da home.
+
+Não tinha feito CRUD utilizando Angular ainda, agradeço a Tindin e ao Fábio (CTO da Tindin) pela oportunidade de testar meus conhecimentos! Acredito que tenha ido bem, consegui desenvolver todas as funcionalidades pedidas, tentei seguir o padrão de layout dos wireframes, porém mudei algumas coisas para deixar a responsividade mais simples e conseguir focar mais no código, apesar de ter conhecimento de que possa melhorar o UX/UI da aplicação!
+
+O que me deu mais trabalho foi aprender a fazer autenticação de rotas no Angular, acredito que não esteja 100% ainda, mas procurarei mais sobre essa forma de deixar rotas privadas. Quando estava pesquisando não estava entendendo que o canActivate é como se fosse um middleware, e isso me tomou um tempo, até perceber que tinha um padrão nos exemplos que achei e perceber que era parecido com middleware. Tive alguns imprevistos com estilos mas consegui deixar apresentável.
+
+Utilizei bastante a documentação da API para fazer as rotas, fazer as interfaces, pegar retornos dos GETs e POSTs.
+
+Acredito que a soft skill que mais tenho desenvolvido fazendo testes de código tem sido a pesquisa. Estou achando facilmente soluções pros meus problemas e conseguindo ler docs com mais tranquilidade tambem!
 
 ## Below are all the data to run the app!
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GameService } from 'src/app/services/game.service';
 import { ICreateGame } from './createGameInterface';
 
@@ -34,10 +34,12 @@ export class CreateGameComponent implements OnInit {
     videos: {url: string, type: string}[] = [];
 
     haveError: boolean = false;
+    params!: any;
 
     constructor(
         private formBuilder: FormBuilder,
         private gameService: GameService,
+        private route: ActivatedRoute,
         private router: Router
     ) { }
 
@@ -69,6 +71,8 @@ export class CreateGameComponent implements OnInit {
             platforms: [''],
             tags: [''],
         })
+
+        this.route.params.subscribe((params: any) => this.params = params.id);
     }
 
     addGenres() {
@@ -113,6 +117,38 @@ export class CreateGameComponent implements OnInit {
         })
     }
 
+    cancelCreation() {
+        this.form.patchValue({
+            title: null,
+            description: null,
+            photos: {
+                name: null,
+                url: null,
+            },
+            videos: {
+                type: null,
+                url: null,
+            },
+            studio: {
+                name: null,
+                locationCity: null,
+                locationCountry: null,
+            },
+            company: {
+                name: null,
+                locationCity: null,
+                locationCountry: null,
+            },
+            mediumPrice: [0],
+            releaseYear: [0],
+            genres: null,
+            platforms: null,
+            tags: null,
+        });
+
+        this.router.navigate([`/games/${this.params}`]);
+    }
+
     onSubmit() {
         this.body.company = this.form.value.company;
         this.body.description = this.form.value.description;
@@ -148,12 +184,14 @@ export class CreateGameComponent implements OnInit {
             try {
                 this.gameService.postGame(this.body);
 
+                this.haveError = false;
+
                 this.router.navigate(['/'])
             } catch (err) {
                 console.error(err);
+                this.haveError = true;
+                return;
             }
-        } else {
-            this.haveError = true;
         }
     }
 }

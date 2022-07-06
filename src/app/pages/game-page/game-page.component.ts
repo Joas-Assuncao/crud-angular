@@ -74,11 +74,15 @@ export class GamePageComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.route.params.subscribe((params: any) => this.params = params.id);
-        this.gameService.getGameById(this.params).subscribe(response => {
-            this.gameById = response
-            this.gameById.game.rating = Number(this.gameById.game.rating.toFixed(2))
-        });
+        try{
+            this.route.params.subscribe((params: any) => this.params = params.id);
+            this.gameService.getGameById(this.params).subscribe(response => {
+                this.gameById = response
+                this.gameById.game.rating = Number(this.gameById.game.rating.toFixed(2))
+            });
+        } catch(err) {
+            console.error(err);
+        }
 
         this.haveAutentication = this.loginService.isAutenticated();
     }
@@ -102,7 +106,7 @@ export class GamePageComponent implements OnInit {
     }
 
     editGame() {
-        this.router.navigate([`/games/edit/${this.params.id}`]);
+        this.router.navigate([`/games/edit/${this.params}`]);
     }
 
     createGame() {
@@ -110,6 +114,6 @@ export class GamePageComponent implements OnInit {
     }
 
     deleteGame() {
-        this.gameService.deleteGame(this.params.id);
+        this.gameService.deleteGame(this.params);
     }
 }

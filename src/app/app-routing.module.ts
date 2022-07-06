@@ -11,8 +11,8 @@ import { HomeGamesComponent } from './pages/home-games/home-games.component';
 const routes: Routes = [
     { path: '', component: HomeGamesComponent},
     { path: 'auth', component: AuthComponent},
-    { path: 'games/:id', component: GamePageComponent},
     { path: 'games/create', component: CreateGameComponent, canActivate: [ AuthGuard ] },
+    { path: 'games/:id', component: GamePageComponent},
     { path: 'games/edit/:id', component: EditGameComponent, canActivate: [ AuthGuard ] }
 ];
 

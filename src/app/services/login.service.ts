@@ -33,6 +33,6 @@ export class LoginService {
     }
 
     isAutenticated() {
-        return this.getToken() ? false : true;
+        return this.getToken() ? true : false;
     }
 }

@@ -28,22 +28,26 @@ export class HomeGamesComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.getGamesService.getGames().subscribe(data => {
-            this.data = data;
-            this.games = data.games.map(game => (
-                {
-                    ...game,
-                    mediumPrice: game.mediumPrice === 0 ?
-                        '' :
-                        game.mediumPrice?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-                    rating: Number(game.rating.toFixed(2))
-                }
-            ));
+        try {
+            this.getGamesService.getGames().subscribe(data => {
+                this.data = data;
+                this.games = data.games.map(game => (
+                    {
+                        ...game,
+                        mediumPrice: game.mediumPrice === 0 ?
+                            '' :
+                            game.mediumPrice?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                        rating: Number(game.rating.toFixed(2))
+                    }
+                ));
 
-            this.highlightGames = data.games.filter(game => (
-                game.highlight === true
-            ));
-        });
+                this.highlightGames = data.games.filter(game => (
+                    game.highlight === true
+                ));
+            });
+        } catch(err) {
+            console.error(err);
+        }
     }
 
     onSearch(value: string): void {
