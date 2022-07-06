@@ -8,6 +8,11 @@
             <img src="{{ game.photos[0].url }}" alt="{{ game.title }}" />
         </ng-template>
     </swiper>
+
+    <button class="primary-button" (click)="createGame()">Create a game!</button>
+
+    <h1>Our games!</h1>
+
     <div class="cards">
         <app-card-game *ngFor="let game of games | paginate: { itemsPerPage: 6, currentPage: p }" [game]="game"></app-card-game>
         <pagination-controls (pageChange)="p = $event" class="pagination"></pagination-controls>

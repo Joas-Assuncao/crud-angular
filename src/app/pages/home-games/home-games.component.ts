@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import SwiperCore, { Navigation } from "swiper";
 
-import { GetGamesService } from '../services/get-games.service';
+import { GetGamesService } from '../../services/get-games.service';
 import { Game, ReturnAPI } from './gamesInterface';
 
 SwiperCore.use([Navigation]);
@@ -21,7 +22,10 @@ export class HomeGamesComponent implements OnInit {
 
     p: number = 1;
 
-    constructor(private getGamesService: GetGamesService) { }
+    constructor(
+        private router: Router,
+        private getGamesService: GetGamesService
+    ) { }
 
     ngOnInit(): void {
         this.getGamesService.getGames().subscribe(data => {
@@ -29,7 +33,10 @@ export class HomeGamesComponent implements OnInit {
             this.games = data.games.map(game => (
                 {
                     ...game,
-                    mediumPrice: game.mediumPrice?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                    mediumPrice: game.mediumPrice === 0 ?
+                        '' :
+                        game.mediumPrice?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+                    rating: Number(game.rating.toFixed(2))
                 }
             ));
 
@@ -45,5 +52,9 @@ export class HomeGamesComponent implements OnInit {
                 game.title.toLowerCase().includes(value)
             ))
         ));
+    }
+
+    createGame() {
+        this.router.navigate(['/games/create']);
     }
 }

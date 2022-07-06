@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
     selector: 'app-header',
@@ -12,7 +13,10 @@ export class HeaderComponent implements OnInit {
     inputSearchGame = new FormControl();
     valueForSearch!: string;
 
-    constructor() { }
+    isLogged: boolean = true;
+    haveAutentication: boolean = false;
+
+    constructor(private loginService: LoginService) {}
 
     ngOnInit(): void {
         this.inputSearchGame.valueChanges.pipe(
@@ -23,6 +27,7 @@ export class HeaderComponent implements OnInit {
             map(value => this.valueForSearch = value),
         ).subscribe(value => this.valueForSearch = value);
 
+        this.haveAutentication = this.loginService.isAutenticated();
     }
 
     seeResultsSearch() {

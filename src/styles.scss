@@ -31,4 +31,19 @@ body {
 
 button {
     cursor: pointer;
+
+    transition: all .2s;
+
+    &:disabled {
+        opacity: .7;
+        cursor: not-allowed;
+    }
+
+    &:hover {
+        opacity: .5;
+    }
+}
+
+a {
+    cursor: pointer;
 }

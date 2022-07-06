@@ -122,7 +122,7 @@ main {
         article {
             color: #FFF;
 
-            div.header {
+            div.title-resume {
                 display: flex;
                 align-items: flex-start;
                 flex-direction: column;
@@ -157,49 +157,72 @@ main {
                 padding: 1rem 0;
             }
 
-            button {
+            div.container-rate {
                 display: grid;
-                place-items: center;
+                gap: 1rem;
 
-                background: #1e3e88;
-                color: #FFF;
+                button.primary-button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
-                padding: .875rem 1.5rem;
+                    background: #1e3e88;
+                    color: #FFF;
 
-                font-size: 1rem;
-                text-transform: uppercase;
+                    padding: .875rem 1.5rem;
 
-                border-radius: .5rem;
+                    font-size: 1rem;
+                    text-transform: uppercase;
 
-                .lds-ring {
-                    display: inline-block;
-                    position: relative;
-                    width: 2rem;
-                    height: 2rem;
+                    border-radius: .5rem;
 
-                    div {
-                        box-sizing: border-box;
-                        display: block;
-                        position: absolute;
-                        width: 1.6rem;
-                        height: 1.6rem;
-                        margin: .2rem;
-                        border: .2rem solid #fff;
-                        border-radius: 50%;
-                        animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-                        border-color: #fff transparent transparent transparent;
+                    .lds-ring {
+                        display: inline-block;
+                        position: relative;
+                        width: 2rem;
+                        height: 2rem;
 
-                        &:nth-child(1) {
-                            animation-delay: -0.45s;
+                        div {
+                            box-sizing: border-box;
+                            display: block;
+                            position: absolute;
+                            width: 1.6rem;
+                            height: 1.6rem;
+                            margin: .2rem;
+                            border: .2rem solid #fff;
+                            border-radius: 50%;
+                            animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+                            border-color: #fff transparent transparent transparent;
+
+                            &:nth-child(1) {
+                                animation-delay: -0.45s;
+                            }
+
+                            &:nth-child(2) {
+                                animation-delay: -0.3s;
+                            }
+
+                            &:nth-child(3) {
+                                animation-delay: -0.15s;
+                            }
                         }
+                    }
+                }
 
-                        &:nth-child(2) {
-                            animation-delay: -0.3s;
-                        }
+                .buttons {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    flex-wrap: wrap;
 
-                        &:nth-child(3) {
-                            animation-delay: -0.15s;
-                        }
+                    button {
+                        min-height: 2rem;
+                        min-width: 2rem;
+
+                        background: #1e3e88;
+                        color: #FFF;
+
+                        border-radius: .5rem;
                     }
                 }
             }
@@ -209,9 +232,41 @@ main {
 
 @keyframes lds-ring {
     0% {
-    transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     100% {
-    transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+@media(max-width: 850px) {
+    main {
+
+        section {
+            flex-direction: column;
+            align-items: center;
+
+            .swiperContainer {
+                width: 70%;
+            }
+        }
+    }
+}
+
+@media(max-width: 600px) {
+    main {
+
+        section {
+            padding: 0;
+
+            .swiperContainer {
+                width: 100%;
+            }
+
+            article {
+                padding: 0 1rem 2rem 1rem;
+            }
+        }
     }
 }

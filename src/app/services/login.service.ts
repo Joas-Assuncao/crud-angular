@@ -26,4 +26,13 @@ export class LoginService {
 
         return returnPost;
     }
+
+    getToken(): string | boolean {
+        const token = localStorage.getItem('token');
+        return token ? token : false;
+    }
+
+    isAutenticated() {
+        return this.getToken() ? false : true;
+    }
 }

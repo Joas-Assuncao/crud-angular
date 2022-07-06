@@ -1,0 +1,16 @@
+<main>
+    <a [routerLink]="['/']">
+        <i class="fa-solid fa-house"></i>
+    </a>
+
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <label>Description: <input type="text" formControlName="description"></label>
+        <label>Launch date: <input type="date" formControlName="launchDate"></label>
+        <label>Medium price: <input type="number" formControlName="mediumPrice"></label>
+        <label>Release Year: <input type="number" formControlName="releaseYear"></label>
+
+        <p *ngIf="haveError">Fill in every fields and add at least one of each field that contains the option to add!</p>
+        <button type="submit">Submit</button>
+    </form>
+
+</main>

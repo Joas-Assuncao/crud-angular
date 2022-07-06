@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from '../services/login.service';
+import { Router } from '@angular/router';
+
+import { LoginService } from '../../services/login.service';
 
 @Component({
     selector: 'app-auth',
@@ -16,7 +18,8 @@ export class AuthComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private loginService: LoginService
+        private loginService: LoginService,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -45,11 +48,14 @@ export class AuthComponent implements OnInit {
         if(this.isEmpty === false && this.isShort === false) {
             const isLogged = this.loginService.login({ email, password });
             isLogged.subscribe((value: any) => {
-                localStorage.setItem('validation', JSON.stringify({ token: value.token, userId: value.user._id }))
+                localStorage.setItem('token', JSON.stringify(value.token));
+                localStorage.setItem('userId', JSON.stringify(value.user._id));
             });
+
+            this.router.navigate(['/']);
             return;
         }
 
-
+        this.isLogged = false;
     }
 }

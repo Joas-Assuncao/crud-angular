@@ -60,6 +60,22 @@ main {
         }
     }
 
+    button.primary-button {
+        display: block;
+
+        margin: 2rem auto;
+
+        background: #1e3e88;
+        color: #FFF;
+
+        padding: .875rem 5rem;
+
+        font-size: 1rem;
+        text-transform: uppercase;
+
+        border-radius: .5rem;
+    }
+
     div.cards {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -115,20 +131,22 @@ main {
 }
 
 @media(max-width: 550px) {
-    .swiper {
-        width: 100%;
-    }
+    main {
+        .swiper {
+            width: 100%;
+        }
 
-    div.cards {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        flex-wrap: wrap;
+        div.cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            flex-wrap: wrap;
 
-        width: 100%;
+            width: 100%;
 
-        padding: 0 1rem;
+            padding: 0 1rem;
 
-        margin-top: 3rem;
+            margin-top: 3rem;
+        }
     }
 }

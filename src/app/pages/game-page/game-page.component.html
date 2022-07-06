@@ -10,7 +10,7 @@
         <div class="swiperContainer">
             <swiper
                 style="--swiper-navigation-color: #fff;--swiper-pagination-color: #fff"
-                [loop]="true"
+                [loop]="false"
                 [spaceBetween]="10"
                 [navigation]="true"
                 [thumbs]="{ swiper: thumbsSwiper }"
@@ -22,7 +22,7 @@
             </swiper>
             <swiper
                 (swiper)="thumbsSwiper = $event"
-                [loop]="true"
+                [loop]="false"
                 [spaceBetween]="10"
                 [slidesPerView]="4"
                 [freeMode]="true"
@@ -36,7 +36,7 @@
         </div>
 
         <article>
-            <div class="header">
+            <div class="title-resume">
                 <h1>{{ gameById.game.title }}<span>{{ gameById.game.rating }}/10</span></h1>
                 <p>{{ gameById.game.resume || gameById.game.description }}</p>
             </div>
@@ -46,10 +46,29 @@
                 <p *ngIf="gameById.game.productor"><span>Productor: </span><label>{{ gameById.game.productor }} </label></p>
                 <p *ngIf="gameById.game.company"><span>Company: </span><label>{{ gameById.game.company.name }} </label></p>
                 <p *ngIf="gameById.game.platforms"><span>Platforms: </span><label *ngFor="let platform of gameById.game.platforms">{{ platform }} </label></p>
-                <p *ngIf="gameById.game.tags"><span>Tags: </span><label *ngFor="let tag of gameById.game.tags">#{{ tag }} </label></p>
+                <p *ngIf="gameById.game.tags[0]"><span>Tags: </span><label *ngFor="let tag of gameById.game.tags">#{{ tag }} </label></p>
                 <p *ngIf="gameById.game.totalVotes"><span>Total votes: </span><label>{{ gameById.game.totalVotes }}</label></p>
             </div>
-            <button (click)="voteInGame()">vote now <div *ngIf="isLoading" class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+
+            <div class="container-rate">
+                <button class="primary-button" (click)="voteInGame()">vote now <div *ngIf="isLoading" class="lds-ring"><div></div><div></div><div></div><div></div></div></button>
+                <button class="primary-button" (click)="editGame()">Edit game</button>
+                <button class="primary-button" (click)="createGame()">Create game</button>
+                <button class="primary-button" style="background: #d03030;" (click)="deleteGame()">Delete game</button>
+                <span *ngIf="isVoting">Rate this game:</span>
+                <div *ngIf="isVoting" class="buttons">
+                    <button value="1" #ref1 (click)="sendRating(ref1.value)">1</button>
+                    <button value="2" #ref2 (click)="sendRating(ref2.value)">2</button>
+                    <button value="3" #ref3 (click)="sendRating(ref3.value)">3</button>
+                    <button value="4" #ref4 (click)="sendRating(ref4.value)">4</button>
+                    <button value="5" #ref5 (click)="sendRating(ref5.value)">5</button>
+                    <button value="6" #ref6 (click)="sendRating(ref6.value)">6</button>
+                    <button value="7" #ref7 (click)="sendRating(ref7.value)">7</button>
+                    <button value="8" #ref8 (click)="sendRating(ref8.value)">8</button>
+                    <button value="9" #ref9 (click)="sendRating(ref9.value)">9</button>
+                    <button value="10" #ref10 (click)="sendRating(ref10.value)">10</button>
+                </div>
+            </div>
         </article>
     </section>
 </main>

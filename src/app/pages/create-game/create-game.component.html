@@ -1,0 +1,48 @@
+<main>
+    <a [routerLink]="['/']">
+        <i class="fa-solid fa-house"></i>
+    </a>
+
+    <form [formGroup]="form" (submit)="onSubmit()">
+        <label>Title: <input type="text" formControlName="title"></label>
+        <label>Description: <input type="text" formControlName="description"></label>
+        <label>Medium price: <input type="number" formControlName="mediumPrice"></label>
+        <label>Release Year: <input type="number" formControlName="releaseYear"></label>
+        <label>Genres
+            <input type="text" formControlName="genres">
+            <button type="button" (click)="addGenres()">Add genres</button>
+        </label>
+        <label>Platforms
+            <input type="text" formControlName="platforms">
+            <button type="button" (click)="addPlatforms()">Add platforms</button>
+        </label>
+        <label>Tags
+            <input type="text" formControlName="tags">
+            <button type="button" (click)="addTags()">Add tags</button>
+        </label>
+        <label formGroupName="photos">Photos<br/>
+            <span>Url: </span><input type="text" formControlName="url">
+            <span>Name: </span><input type="text" formControlName="name">
+            <button type="button" (click)="addPhotos()">Add photo</button>
+        </label>
+        <label formGroupName="videos">Videos<br/>
+            <span>Url: </span><input type="text" formControlName="url">
+            <span>Name: </span><input type="text" formControlName="type">
+            <button type="button" (click)="addVideos()">Add video</button>
+        </label>
+        <label formGroupName="studio">Studio<br/>
+            <span>Name: </span><input type="text" formControlName="name">
+            <span>Location City: </span><input type="text" formControlName="locationCity">
+            <span>Location Country: </span><input type="text" formControlName="locationCountry">
+        </label>
+        <label formGroupName="company">Company<br/>
+            <span>Name: </span><input type="text" formControlName="name">
+            <span>Location City: </span><input type="text" formControlName="locationCity">
+            <span>Location Country: </span><input type="text" formControlName="locationCountry">
+        </label>
+
+        <p *ngIf="haveError">Fill in every fields and add at least one of each field that contains the option to add!</p>
+        <button type="submit">Submit</button>
+    </form>
+
+</main>
