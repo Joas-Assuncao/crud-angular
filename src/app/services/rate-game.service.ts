@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 export interface IRateGameReturn {
     game: string;
@@ -14,16 +14,18 @@ export interface IRateGameBody {
 }
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class RateGameService {
-
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
     rateGame({ gameId, rate }: IRateGameBody) {
-        return this.http.post<IRateGameReturn>(`${environment.base_URL_API}/games/rate`, {
-            gameId,
-            rate
-        });
+        return this.http.post<IRateGameReturn>(
+            `${environment.base_URL_API}/games/rate`,
+            {
+                gameId,
+                rate,
+            }
+        );
     }
 }

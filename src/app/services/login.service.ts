@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 interface ILoginParams {
     email: string;
@@ -9,19 +8,16 @@ interface ILoginParams {
 }
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class LoginService {
-
-    constructor(
-        private http: HttpClient
-    ) { }
+    constructor(private http: HttpClient) {}
 
     login({ email, password }: ILoginParams) {
-        console.log({ login: 'login', email, password })
+        console.log({ login: 'login', email, password });
         const returnPost = this.http.post(`${environment.base_URL_API}/auth`, {
             email,
-            password
+            password,
         });
 
         return returnPost;
